@@ -1,0 +1,225 @@
+
+
+
+
+
+
+
+// stylelint-disable function-disallowed-list
+
+// .modal-open      - body class for killing the scroll
+// .modal           - container to scroll within
+// .modal-dialog    - positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and stuff
+
+
+// Container that the modal scrolls within
+.modal {
+
+
+    --ui-modal-width: 1110px;
+    --ui-modal-padding: 24px;
+    --ui-modal-margin: 30px;
+    --ui-modal-border-radius: 20px;
+    --ui-modal-box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+    --ui-modal-header-padding: 20px 24px;
+
+
+    @include media('>=lg') {
+        --ui-modal-header-padding: 45px 98px 0;
+        --ui-modal-padding: 98px;
+
+        --ui-modal-border-radius: 50px;
+    }
+    // scss-docs-end modal-css-vars
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    // Prevent Chrome on Windows from adding a focus outline. For details, see
+    // https://github.com/twbs/bootstrap/pull/10951.
+    outline: 0;
+    // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
+    // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
+    // See also https://github.com/twbs/bootstrap/issues/17695
+
+    .f-group {
+        margin-bottom: 15px;
+    }
+
+    .btn-close {
+        position: absolute;
+        cursor: pointer;
+        right: 45px;
+        top: 45px;
+        mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.2847 18.2156C19.4255 18.3578 19.5045 18.5499 19.5045 18.75C19.5045 18.9501 19.4255 19.1422 19.2847 19.2844C19.1413 19.423 18.9497 19.5005 18.7503 19.5005C18.5509 19.5005 18.3593 19.423 18.2159 19.2844L12.0003 13.0594L5.78469 19.2844C5.64133 19.423 5.44972 19.5005 5.25031 19.5005C5.0509 19.5005 4.85929 19.423 4.71594 19.2844C4.5751 19.1422 4.49609 18.9501 4.49609 18.75C4.49609 18.5499 4.5751 18.3578 4.71594 18.2156L10.9409 12L4.71594 5.78438C4.59634 5.63866 4.53522 5.45366 4.54447 5.26537C4.55372 5.07708 4.63267 4.89896 4.76597 4.76566C4.89927 4.63236 5.07739 4.55341 5.26568 4.54416C5.45397 4.53491 5.63897 4.59603 5.78469 4.71563L12.0003 10.9406L18.2159 4.71563C18.3617 4.59603 18.5467 4.53491 18.7349 4.54416C18.9232 4.55341 19.1014 4.63236 19.2347 4.76566C19.368 4.89896 19.4469 5.07708 19.4562 5.26537C19.4654 5.45366 19.4043 5.63866 19.2847 5.78438L13.0597 12L19.2847 18.2156Z' fill='black'/%3E%3C/svg%3E%0A");
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.2847 18.2156C19.4255 18.3578 19.5045 18.5499 19.5045 18.75C19.5045 18.9501 19.4255 19.1422 19.2847 19.2844C19.1413 19.423 18.9497 19.5005 18.7503 19.5005C18.5509 19.5005 18.3593 19.423 18.2159 19.2844L12.0003 13.0594L5.78469 19.2844C5.64133 19.423 5.44972 19.5005 5.25031 19.5005C5.0509 19.5005 4.85929 19.423 4.71594 19.2844C4.5751 19.1422 4.49609 18.9501 4.49609 18.75C4.49609 18.5499 4.5751 18.3578 4.71594 18.2156L10.9409 12L4.71594 5.78438C4.59634 5.63866 4.53522 5.45366 4.54447 5.26537C4.55372 5.07708 4.63267 4.89896 4.76597 4.76566C4.89927 4.63236 5.07739 4.55341 5.26568 4.54416C5.45397 4.53491 5.63897 4.59603 5.78469 4.71563L12.0003 10.9406L18.2159 4.71563C18.3617 4.59603 18.5467 4.53491 18.7349 4.54416C18.9232 4.55341 19.1014 4.63236 19.2347 4.76566C19.368 4.89896 19.4469 5.07708 19.4562 5.26537C19.4654 5.45366 19.4043 5.63866 19.2847 5.78438L13.0597 12L19.2847 18.2156Z' fill='black'/%3E%3C/svg%3E%0A");
+        background-color: $blackColor;
+        mask-size: 100%;
+        -webkit-mask-size: 100%;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        width: 24px;
+        height: 34px;
+        z-index: 10;
+        &:hover {
+            background-color: $primaryColor;
+        }
+
+        @include media('<lg') {
+            right: 24px;
+            top: 14px;
+
+        }
+
+    }
+}
+.modal.fade {
+    transition: opacity .15s linear;
+}
+
+// Shell div to position the modal with bottom padding
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: var(--ui-modal-margin);
+    margin-left: auto;
+    margin-right: auto;
+    // allow clicks to pass through for custom click handling to close modal
+    pointer-events: none;
+    max-width: var(--ui-modal-width);
+
+    // When fading in the modal, animate it to slide down
+    .modal.fade & {
+        transition: transform .3s ease-out;
+        transform: translate(0,-50px);
+    }
+    .modal.show & {
+        transform: none;
+    }
+
+    // When trying to close, animate focus to scale
+    .modal.modal-static & {
+        transform: scale(1.02);
+    }
+}
+
+.modal-dialog-scrollable {
+    height: calc(100% - var(--ui-modal-margin) * 2);
+
+    .modal-content {
+        max-height: 100%;
+        overflow: hidden;
+    }
+
+    .modal-body {
+        overflow-y: auto;
+    }
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - var(--ui-modal-margin) * 2);
+}
+
+// Actual modal
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
+    // counteract the pointer-events: none; in the .modal-dialog
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: var(--ui-modal-border-radius);
+    box-shadow: var(--ui-modal-box-shadow);
+    // Remove focus outline from opened modal
+    outline: 0;
+}
+
+// Modal background
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0,0,0,.25);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+// Modal header
+// Top section of the modal w/ title and dismiss
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
+    padding: var(--ui-modal-header-padding);
+    border-radius: var(--ui-modal-border-radius) var(--ui-modal-border-radius) 0 0;
+
+
+}
+
+// Title text within header
+.modal-title {
+    margin-bottom: 0;
+}
+
+// Modal body
+// Where all modal content resides (sibling of .modal-header and .modal-footer)
+.modal-body {
+    position: relative;
+    // Enable `flex-grow: 1` so that the body take up as much space as possible
+    // when there should be a fixed height on `.modal-dialog`.
+    flex: 1 1 auto;
+    padding: 30px var(--ui-modal-padding) var(--ui-modal-padding);
+}
+
+// Footer (for actions)
+.modal-footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center; // vertically center
+    justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
+    padding: calc(var(--ui-modal-padding) - var(--ui-modal-footer-gap) * .5);
+    background-color: #fff;
+    border-radius: 0 0 var(--ui-modal-border-radius) var(--ui-modal-border-radius);
+
+    // Place margin between footer elements
+    // This solution is far from ideal because of the universal selector usage,
+    // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
+    > * {
+        margin: calc(var(--ui-modal-footer-gap) * .5); // Todo in v6: replace with gap on parent class
+    }
+}
+
+// Scale up the modal
+@include media('<lg') {
+    .modal {
+
+    }
+
+    // Automatically set modal's width for larger viewports
+    .modal-dialog {
+        max-width: var(--ui-modal-width);
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .modal-sm {
+        --ui-modal-width: 100%;
+    }
+}

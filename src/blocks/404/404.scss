@@ -1,0 +1,141 @@
+// SCSS
+@function tone($color, $tone: 1, $dir: up) {
+    $adjust: if($dir == up, 16, -16) * $tone;
+    @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust);
+}
+
+$color1: tone($primaryColor, 3, down);
+$color2:  tone($primaryColor, 1, down);
+$color3:  $primaryColor;
+$color4:  tone($primaryColor, 1);
+$color5:  tone($primaryColor, 2);
+$color6: tone($primaryColor, 3);
+
+$color7: tone($primaryColor, 1, down);
+$color8: tone($primaryColor, 2, down);
+
+.btn-primary {
+    background-color: $primaryColor;
+    border-color: $primaryColor;
+}
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: $primaryColor;
+    border-color: $primaryColor;
+}
+.error-container {
+    --error-size: 0.7;
+    text-align: center;
+    font-size: calc(106px  * var(--error-size));;
+    font-weight: 800;
+    margin: 70px 15px;
+
+    @include media('>=lg') {
+        --error-size: 1;
+
+    }
+}
+.error-container > span {
+    display: inline-block;
+    position: relative;
+}
+.error-container > span.four {
+    width: calc(136px * var(--error-size));
+    height: calc(43px  * var(--error-size));
+    border-radius: 999px;
+    background:
+            linear-gradient(140deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.07) 43%, transparent 44%, transparent 100%),
+            linear-gradient(105deg, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.06) 41%, rgba(0, 0, 0, 0.07) 76%, transparent 77%, transparent 100%),
+            linear-gradient(to right, $color7, $color8);
+}
+.error-container > span.four:before,
+.error-container > span.four:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 999px;
+}
+.error-container > span.four:before {
+    width: calc(43px  * var(--error-size));
+    height: calc(156px * var(--error-size));
+    left: calc(60px  * var(--error-size));
+    bottom: calc(-43px  * var(--error-size));
+    background:
+            linear-gradient(128deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.07) 40%, transparent 41%, transparent 100%),
+            linear-gradient(116deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.07) 50%, transparent 51%, transparent 100%),
+            linear-gradient(to top, $color1, $color2, $color3, $color4, $color5);
+}
+.error-container > span.four:after {
+    width: calc(137px  * var(--error-size));
+    height: calc(43px  * var(--error-size));
+    transform: rotate(-49.5deg);
+    left: calc(-18px  * var(--error-size));
+    bottom: calc(36px  * var(--error-size));
+    background: linear-gradient(to right, $color1, $color2, $color3, $color4, $color5);
+}
+
+.error-container > span.zero {
+    vertical-align: text-top;
+    width: calc(156px  * var(--error-size));
+    height: calc(156px  * var(--error-size));
+    border-radius: 999px;
+    background: linear-gradient(-45deg, transparent 0%, rgba(0, 0, 0, 0.06) 50%,  transparent 51%, transparent 100%),
+    linear-gradient(to top right, $color1, $color1, $color2, $color3, $color4, $color6, $color6);
+    overflow: hidden;
+    animation: bgshadow 5s infinite;
+}
+.error-container > span.zero:before {
+    content: '';
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    width: calc(90px  * var(--error-size));
+    height: calc(90px  * var(--error-size));
+    background-color: transparent;
+    left: 0px;
+    bottom: 0px;
+    background: linear-gradient(95deg, transparent 0%, transparent 8%, rgba(0, 0, 0, 0.07) 9%, transparent 50%, transparent 100%), linear-gradient(85deg, transparent 0%, transparent 19%, rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.07) 91%, transparent 92%, transparent 100%);
+}
+.error-container > span.zero:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 999px;
+    width: calc(70px  * var(--error-size));;
+    height: calc(70px  * var(--error-size));;
+    left: calc(43px  * var(--error-size));;
+    bottom: calc(43px  * var(--error-size));;
+    background: #fff;
+    box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.screen-reader-text {
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+}
+
+@keyframes bgshadow {
+    0% {
+        box-shadow: inset -160px 160px 0px 5px rgba(0, 0, 0, 0.4);
+    }
+    45% {
+        box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    }
+    55% {
+        box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: inset 160px -160px 0px 5px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.p-error {
+    padding: 30px 0 30px;
+    &__header {
+        text-align: center;
+    }
+    &__footer {
+        text-align: center;
+    }
+}

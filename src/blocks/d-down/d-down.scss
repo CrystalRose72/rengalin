@@ -1,0 +1,38 @@
+.d-down {
+	$self: &;
+	position: relative;
+
+	&_opened {
+		#{$self}__menu {
+			display: block;
+		}
+	}
+
+	&__menu {
+		display: none;
+		overflow: hidden;
+		background: #FFFFFF;
+		border: 1px solid #F2F3F3;
+		box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+ 		padding: 15px 0;
+		position: absolute;
+		z-index: 99;
+		left: -1px;
+		width: 100%;
+		min-width: 180px;
+		max-width: 320px;
+
+		@keyframes items_fade {
+			from {opacity: 0;}
+			to {opacity: 1;}
+		}
+		animation: items_fade 0.5s ease;
+
+		&__scroll {
+			max-height: 200px;
+			overflow: auto;
+			padding: 0 10px;
+		}
+	}
+
+}

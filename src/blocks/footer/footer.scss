@@ -1,0 +1,132 @@
+.footer-notice-mobile {
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 30px 0;
+	background: rgb(0, 155, 222);
+}
+.footer {
+	padding: 30px 0 30px;
+	background-color: #fff;
+
+	.row {
+		@include media('>=lg') {
+			--ui-gutter-x: 50px;
+		}
+	}
+	&__logo {
+
+		margin-bottom: 22px;
+		img {
+			height: 27px;
+			vertical-align: top;
+			margin-bottom: 16px;
+			@include media('>=lg') {
+				margin-bottom: 24px;
+			}
+		}
+
+		&__desc {
+			color: #231F20;
+			font-size: 16px;
+			font-weight: 300;
+			line-height: 19px;
+		}
+
+		@include media('>=lg') {
+			margin-bottom: 38px;
+		}
+	}
+	&__title-space {
+		@include media('>=lg') {
+			height: 19px + 18px;
+		}
+	}
+	&__title {
+		margin-bottom: 6px;
+		color: rgb(0, 0, 0);
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 24px;
+		text-transform: uppercase;
+
+		@include media('>=lg') {
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 24px;
+		}
+	}
+
+	&__links {
+		> div {
+			margin-bottom: 5px;
+		}
+		a {
+			transition: color 0.25s;
+			text-decoration: none;
+			color: rgb(51, 51, 51);
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 19px;
+
+			&:hover {
+				color: $primaryColor;
+			}
+		}
+	}
+
+	&__mmh-logo {
+		@include media('<lg') {
+			margin-bottom: 30px;
+		}
+	}
+	.footer-phones {
+
+		margin-bottom: 30px;
+
+		a {
+			color: rgb(0, 155, 222);
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 29px;
+			text-transform: uppercase;
+			@include media('>=lg') {
+			}
+		}
+		@include media('>=lg') {
+			margin-bottom: 40px;
+		}
+
+	}
+
+
+	@include media('<lg') {
+		text-align: center;
+	}
+	@include media('>=lg') {
+		padding: 60px 0 40px;
+	}
+}
+
+.footer-alert {
+	color: rgb(255, 255, 255);
+	background: rgb(0, 155, 222);
+	padding: 36px 0 30px;
+	text-align: center;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 34px;
+	text-transform: uppercase;
+
+	a {
+		text-decoration: underline;
+	}
+
+	@include media('<lg') {
+		display: none;
+	}
+
+}

@@ -1,0 +1,54 @@
+.breadcrumb {
+	display: none;
+	flex-wrap: wrap;
+	margin-bottom: 56px;
+	list-style: none;
+	$self: &;
+	&-item {
+   		line-height: 20px;
+		position: relative;
+
+		font-weight: 400;
+		font-size: 14px;
+		/* identical to box height */
+		color: #000000;
+
+
+		a {
+			text-decoration: none;
+			transition: color 0.2s;
+			font-weight: bold;
+			color: #000000;
+
+			span {
+				font-weight: bold;
+			}
+			&:hover {
+				color: rgba(#000000, 0.9 );
+			}
+		}
+		span {
+			font-weight: normal;
+		}
+
+		+ #{ $self }-item {
+			padding-left: 20px;
+			&::before {
+				content: "/";
+				width: 8px;
+				height: 13px;
+				position: absolute;
+				left: 7px;
+				top: 1px;
+			}
+		}
+
+		&.active {
+			color: $blackColor;
+		}
+	}
+
+	@include media('>=lg'){
+		display: flex;
+	}
+}
